@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: customer-service
+  profiles:
+    active: dev
+  cloud:
+    config:
+#      overrideSystemProperties: false
+#      overrideNone: true
+      
+      uri: http://localhost:8888
+#      profile: dev
+#      discovery:
+#        enabled: true
+#        serviceId: demo-config-server #spring.application.name of the spring cloud config server
+        
+      failFast: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 6  
+        max-interval: 6000
+        multiplier: 2
+
+#management:
+#  port: 54001
+#  security:
+#    enabled: false  #disable security/authentication for demo
+#  endpoints:
+#    web:
+#      base-path: /manage
+#      exposure:
+#        include: "*"
+#        exclude: env, beans
+#    enabled-by-default: true
+#  endpoint:
+#    shutdown:
+#      enabled: true
+#    info:
+#      enabled: true
+#management.endpoints.web.base-path=/
+#management.endpoints.web.path-mapping.health=healthcheck
+
+#health: 
+#info:  #localhost:54001/info
+#  app:
+#    name: "@project.name@" #从pom.xml中获取
+#    description: "@project.description@"
+#    version: "@project.version@"
+#    spring-boot-version: "@project.parent.version@"

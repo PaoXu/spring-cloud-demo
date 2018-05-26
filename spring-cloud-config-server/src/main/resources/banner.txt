@@ -1,0 +1,5 @@
+Application @: ${application.title} - ${application.version}
+
+###${application.name}###
+
+Spring-boot @: ${spring-boot.version}

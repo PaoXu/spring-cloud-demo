@@ -1,0 +1,12 @@
+info: sample spring cloud service@@
+lucky-word: Greeting from the Spring Cloud Config Server ~~~
+spring:
+  cloud:
+    config:
+      allowOverride: true
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/    

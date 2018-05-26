@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: client-feign
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8888
+#      discovery:
+#        enabled: true
+#        serviceId: demo-config-server #spring.application.name of the spring cloud config server
+        
+      failFast: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 6  
+        max-interval: 6000
+        multiplier: 2

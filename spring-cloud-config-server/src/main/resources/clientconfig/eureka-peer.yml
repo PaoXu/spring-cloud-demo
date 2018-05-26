@@ -1,0 +1,31 @@
+lucky-word: Eureka
+
+#server:
+#  port: 8761
+
+application:
+  title: Spring Cloud Eureka
+  version: 0.0.1
+
+#(Peer Awareness Eureka Server)     
+---
+spring:
+  profiles: eurekahost1
+eureka:
+  instance:
+    hostname: eurekahost1
+  client:
+    serviceUrl:
+      defaultZone: http://eurekahost2:8762/eureka/    
+
+---
+spring:
+  profiles: eurekahost2
+eureka:
+  instance:
+    hostname: eurekahost2
+  client:
+    serviceUrl:
+      defaultZone: http://eurekahost1:8761/eureka/  
+      
+      

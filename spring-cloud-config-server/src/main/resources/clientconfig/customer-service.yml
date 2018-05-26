@@ -1,0 +1,39 @@
+#info: sample spring cloud service@@
+lucky-word: Greeting from the Spring Cloud Config Server ~~~
+
+server:
+  port: 8090
+
+spring:  
+  cloud:
+    config:
+      overrideSystemProperties: false
+      overrideNone: true
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/    
+    healthcheck:
+      enabled: true  #enable      
+
+management:
+  port: 58090
+  security:
+    enabled: false  #disable security/authentication for demo
+  endpoints:
+    web:
+#      base-path: /manage
+      exposure:
+        include: "*"
+        exclude: env, beans
+    enabled-by-default: true
+  endpoint:
+    shutdown:
+      enabled: true
+    info:
+      enabled: true
+#management.endpoints.web.base-path=/
+#management.endpoints.web.path-mapping.health=healthcheck
+      

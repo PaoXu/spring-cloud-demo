@@ -1,0 +1,36 @@
+
+lucky-word: （Customer-Service) Greeting My Own #will be overriden
+#nickname: '@_@' 
+spring:
+  freemarker:
+    enabled: true
+#    prefix: 
+#    suffix: .ftl
+#    template-loader-path: classpath:/templates/ 
+#    content-type: text/html
+
+    
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/          
+#    metadata-map:
+#      management.port: ${management.port：8081}
+
+eureka:
+  instance:
+    metadata-map:  #自定义灰度模式属性
+      gated-launch: false   #Canary Testing, 默认灰度模式为false
+#      version: 1.1
+#      variant: A
+
+#allow the resource server to decode the tokens it is given and authenticate a user  
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:9999/uaa/user
+#      preferTokenInfo: false  
+
+#logging.level.org.springframework.security: DEBUG
+#security.user.password: password
+      

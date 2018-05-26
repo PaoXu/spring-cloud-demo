@@ -1,0 +1,33 @@
+lucky-word: (Auth-Server) Greeting My Own #will be overriden
+
+
+server:
+  port: 9999
+  contextPath: /uaa
+  
+security.user.password: password
+security.ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+
+logging.level.org.springframework.security.web.util.matcher: OFF
+logging.level.org.springframework.security: DEBUG
+
+ 
+
+#This registers a client "acme" with a secret and some authorized grant types including "authorization_code".      
+security:
+  oauth2:
+    client:
+      clientId: acme
+      clientSecret: acmesecret
+      authorized-grant-types: authorization_code,refresh_token,password
+      scope: openid
+
+#get the authentication code
+#http://localhost:9999/uaa/oauth/authorize?client_id=acme&response_type=code&redirect_uri=http://www.baidu.com
+
+#get the access token
+#curl client:secret@localhost:9999/uaa/oauth/token  -d grant_type=authorization_code -d client_id=acme    -d redirect_uri=http://www.baidu.com -d code=txbwN5
+
+
+#curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=authorization_code&code=1n8NyE&redirect_uri=http://www.baidu.com' "http://client:secret@localhost:9999/oauth/token"
+#http://localhost:9000/customer/greeting?name=Pao&region=China&token=123&client=acme      

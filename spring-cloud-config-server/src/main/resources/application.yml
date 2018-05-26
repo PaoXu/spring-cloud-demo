@@ -1,0 +1,21 @@
+server:
+  port: 8888
+  
+spring:
+  application:
+    name: demo-config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/clientconfig  
+application:
+  title: Spring Cloud Config Server
+  version: 0.0.1  
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/

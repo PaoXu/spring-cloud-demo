@@ -1,0 +1,61 @@
+server:
+  port: 8085
+
+lucky-word: (Feign) Greeting My Own #will be overriden
+spring:
+  freemarker:
+    enabled: true
+#    prefix: 
+#    suffix: .ftl
+#    template-loader-path: classpath:/templates/ 
+#    content-type: text/html
+management:
+#  port: 54000
+  security:
+    enabled: false  #disable security/authentication for demo
+  endpoints:
+    web:
+      base-path: /manage
+#      exposure:
+#        include: "*"
+#        exclude: env, beans
+#    enabled-by-default: true
+#  endpoint:
+#    shutdown:
+#      enabled: true
+#    info:
+#      enabled: true
+#management.endpoints.web.base-path=/
+#management.endpoints.web.path-mapping.health=healthcheck
+
+health: 
+info:  #localhost:54000/info
+  app:
+    name: "@project.name@" #从pom.xml中获取
+    description: "@project.description@"
+    version: "@project.version@"
+    spring-boot-version: "@project.parent.version@"
+    
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/          
+#    metadata-map:
+#      management.port: ${management.port：8081}
+
+
+feign:
+  hystrix:
+    enabled: true
+
+#ribbon:
+#  ConnectTimeout: 500
+#  ReadTimeout: 3000    
+#  maxAutoRetries: 3
+  
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+hystrix.command."CustomerService#geeting(String,String)".execution.isolation.thread.timeoutInMilliseconds: 1000
+
+#每一个被创建的Feign客户端都会有一个logger。该logger默认的名称为Feign客户端对应的接口的全限定名。Feign日志记录只能响应DEBUG日志级别。
+logging.level.demo.feign.CustomerService: DEBUG
+
