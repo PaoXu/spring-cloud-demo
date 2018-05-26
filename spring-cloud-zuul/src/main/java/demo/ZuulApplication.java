@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoRestTemplateFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +20,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableConfigurationProperties(ZuulApplicationConfiguration.class)
 @EnableZuulProxy
+//public class ZuulApplication{
+//	@Autowired
+//	private ZuulApplicationConfiguration configuration;
+//	
+//    @RequestMapping("/home")
+//    public String home() {
+////    	return "Hello World @@@###" + luckyWord;
+//        return "(Zuul) Hello World ===" + configuration.getLuckyWord();
+//    }
+//
+//
+//    public static void main(String[] args) {
+//        SpringApplication.run(ZuulApplication.class, args);
+//    }
+//}
+
 @EnableOAuth2Sso
 public class ZuulApplication extends WebSecurityConfigurerAdapter {
 

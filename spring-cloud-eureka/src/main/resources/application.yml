@@ -1,0 +1,37 @@
+server:
+  port: 8763
+
+application:
+  title: Spring Cloud Eureka
+  version: 0.0.1
+
+#(Standalone Eureka Server)   
+---
+eureka:
+  instance:
+    hostname: localhost
+    #statusPageUrlPath: ${management.context-path}/info
+    #healthCheckUrlPath: ${management.context-path}/health
+    #nonSecurePortEnabled: false
+    #securePortEnabled: true
+    #statusPageUrl: https://${eureka.instance.hostname}/info
+    #healthCheckUrl: https://${eureka.instance.hostname}/health
+    #homePageUrl: https://${eureka.instance.hostname}/
+  client:
+    register-with-eureka: false  #false:不作为一个客户端注册到注册中心  
+    fetch-registry: false #为true时，可以启动，但报异常：Cannot execute request on any known server
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    
+lucky-word: Greeting from the Spring Cloud Config Server @@ Eureka    
+
+#spring:
+#  cloud:
+#    config:
+#      allowOverride: true
+
+#See EurekaInstanceConfigBean and EurekaClientConfigBean for more details of the configurable options.      
+
+

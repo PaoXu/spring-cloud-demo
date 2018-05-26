@@ -23,11 +23,12 @@ zuul:
     user:
       path: /user/**
       url: http://localhost:9999/uaa/user     
-    sample:
-      path: /sample/**
+    resource:
+      path: /resource/**
       url: http://localhost:9090
 #      serviceId: resource-service
-      #sensitiveHeaders: 
+#      stripPrefix: false
+#      sensitiveHeaders: 
       
 #management:
 ##  port: 59000
@@ -102,15 +103,16 @@ logging:
 #spring:
 #  profiles: default
 security:
-  user:
-    password: password
-  ignored: "*.bundle.*"
+#  user:
+#    name: user
+#    password: password
+#  ignored: "*.bundle.*"
   oauth2:
     client:
       accessTokenUri: http://localhost:9999/uaa/oauth/token
       userAuthorizationUri: http://localhost:9999/uaa/oauth/authorize
-      clientId: acme
-      clientSecret: acmesecret
+      clientId: zuulgateway
+      clientSecret: zuulsecret
     resource:
       userInfoUri: http://localhost:9999/uaa/user
 #      jwt:
@@ -135,5 +137,3 @@ security:
 #    resource:
 #      userInfoUri: https://api.github.com/user
 #      preferTokenInfo: false      
-      
-      

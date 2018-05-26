@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class CustomerServiceFallbackProvider implements ZuulFallbackProvider {
+public class ResourceServiceFallbackProvider implements ZuulFallbackProvider {
 
 	@Override
 	public String getRoute() {
-		return "customer-service";  //HttpClientRibbonCommandFactory.create() using RibbonCommandContext.getServiceId() to locate fallback provider
+		return "resource-service";  //HttpClientRibbonCommandFactory.create() using RibbonCommandContext.getServiceId() to locate fallback provider
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class CustomerServiceFallbackProvider implements ZuulFallbackProvider {
 
 	            @Override
 	            public InputStream getBody() throws IOException {
-	                return new ByteArrayInputStream("customer-service is unavailable".getBytes());
+	                return new ByteArrayInputStream("resource-service is unavailable".getBytes());
 	            }
 
 	            @Override

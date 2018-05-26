@@ -4,23 +4,21 @@ lucky-word: (Auth-Server) Greeting My Own #will be overriden
 server:
   port: 9999
   contextPath: /uaa
-  
-security.user.password: password
+
+#SecurityProperties.java, the default user registered in Auth Server
+#security.user.name: user
+#security.user.password: user
 security.ignored: /css/**,/js/**,/favicon.ico,/webjars/**
 
 logging.level.org.springframework.security.web.util.matcher: OFF
 logging.level.org.springframework.security: DEBUG
 
- 
 
-#This registers a client "acme" with a secret and some authorized grant types including "authorization_code".      
-security:
-  oauth2:
-    client:
-      clientId: acme
-      clientSecret: acmesecret
-      authorized-grant-types: authorization_code,refresh_token,password
-      scope: openid
+#Configuration properties for OAuth2 Client(#OAuth2ClientProperties.java)
+#security.oauth2.client.clientId: zuulgateway
+#security.oauth2.client.clientSecret: zuulsecret
+#security.oauth2.client.authorizedGrantTypes: authorization_code,refresh_token,password
+#security.oauth2.client.scope: openid
 
 #get the authentication code
 #http://localhost:9999/uaa/oauth/authorize?client_id=acme&response_type=code&redirect_uri=http://www.baidu.com
@@ -30,4 +28,23 @@ security:
 
 
 #curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=authorization_code&code=1n8NyE&redirect_uri=http://www.baidu.com' "http://client:secret@localhost:9999/oauth/token"
-#http://localhost:9000/customer/greeting?name=Pao&region=China&token=123&client=acme      
+#http://localhost:9000/customer/greeting?name=Pao&region=China&token=123&client=acme
+
+#DATASOURCE  
+spring.datasource.name: demo  
+spring.datasource.url: jdbc:derby:/home/xwp/data/derby/oauth2dba;user=derby;password=derby;  
+spring.datasource.driverClassName: org.apache.derby.jdbc.EmbeddedDriver
+spring.datasource.initialSize: 5  
+spring.datasource.minIdle: 5  
+spring.datasource.maxActive: 20  
+spring.datasource.maxWait: 60000  
+spring.datasource.timeBetweenEvictionRunsMillis: 60000  
+spring.datasource.minEvictableIdleTimeMillis: 300000  
+spring.datasource.filters: stat  
+spring.datasource.validationQuery: select 1 from sysibm.sysdummy1  
+spring.datasource.testWhileIdle: true  
+spring.datasource.testOnBorrow: false  
+spring.datasource.testOnReturn: false  
+spring.datasource.poolPreparedStatements: true  
+spring.datasource.maxOpenPreparedStatements: 20
+        
